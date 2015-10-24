@@ -1,0 +1,16 @@
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharpStuff.exe.config
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharpStuff.XML
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharpStuff.exe
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharpStuff.pdb
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Core.dll
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Core.xml
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\obj\Debug\FSharpStuff.exe
+\\psf\home\documents\visual studio 2012\Projects\FSharpStuff\obj\Debug\FSharpStuff.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Data.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Data.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Data.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Configuration.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\SharpYaml.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Configuration.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\FSharp.Configuration.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\FSharpStuff\bin\Debug\SharpYaml.xml

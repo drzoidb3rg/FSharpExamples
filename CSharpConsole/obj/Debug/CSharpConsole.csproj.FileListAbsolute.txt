@@ -1,0 +1,17 @@
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\CSharpConsole.exe.config
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\CSharpConsole.exe
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\CSharpConsole.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\obj\Debug\CSharpConsole.exe
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\obj\Debug\CSharpConsole.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharpStuff.exe
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Data.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Configuration.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\SharpYaml.dll
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharpStuff.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharpStuff.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Data.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Data.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Configuration.pdb
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Configuration.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\SharpYaml.xml
+\\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\obj\Debug\CSharpConsole.csprojResolveAssemblyReference.cache
