@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FSharp.Data;
-using FSharp.Data.Runtime.BaseTypes;
 
 namespace CSharpConsole
 {
@@ -14,30 +8,30 @@ namespace CSharpConsole
         {
             Console.WriteLine("started");
 
+            var ebscoData = Client.ebscoSample;
 
+            dynamic ebscoObj = new DynamicJsonValueWrapper(ebscoData);
 
-            var data = WorldBankProvider.records("us");
+            var id = ebscoObj.Id;
 
-            var second = data[1];
+            //needs to return an array of DynamicJsonWrapper objects
+            var members = ebscoObj.members;
 
-            var country = WorldBankProvider.getCountry(second);
+            foreach (var item in members)
+            {
+                dynamic d = new DynamicJsonValueWrapper(item);
 
+                Console.WriteLine("Title : " + d.Title);
+                Console.WriteLine("Abstract : " + d.Abstract);
+               
+           
+                Console.WriteLine("--------");
+            }
 
-            dynamic bankObj = new DynamicJsonWrapper(country);
-
-            var countryName = bankObj.Value;
-
-            Console.WriteLine("Country name is " + countryName);
-
-            
-
-            //var countryId = WorldBankProvider.getGeneric(country, "id");
-
-            //var countryValue = WorldBankProvider.getGeneric(country, "value");
-
-            //Console.WriteLine("id is " + countryId + "; name is " + countryValue);
+             //push the dynamic part into f#. have function that returns dynamic objects.
 
             Console.ReadKey();
         }
     }
 }
+

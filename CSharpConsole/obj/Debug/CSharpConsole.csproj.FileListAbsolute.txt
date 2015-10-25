@@ -15,3 +15,15 @@
 \\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\FSharp.Configuration.xml
 \\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\bin\Debug\SharpYaml.xml
 \\psf\Home\Documents\Visual Studio 2012\Projects\CSharpConsole\obj\Debug\CSharpConsole.csprojResolveAssemblyReference.cache
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\CSharpConsole.exe.config
+C:\src\FSharpExamples\CSharpConsole\obj\Debug\CSharpConsole.exe
+C:\src\FSharpExamples\CSharpConsole\obj\Debug\CSharpConsole.pdb
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\CSharpConsole.exe
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\CSharpConsole.pdb
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharp.Data.dll
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharp.Data.pdb
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharp.Data.xml
+C:\src\FSharpExamples\CSharpConsole\obj\Debug\CSharpConsole.csprojResolveAssemblyReference.cache
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharpClient.dll
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharpClient.pdb
+C:\src\FSharpExamples\CSharpConsole\bin\Debug\FSharpClient.xml

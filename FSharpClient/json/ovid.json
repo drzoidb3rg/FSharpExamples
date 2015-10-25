@@ -1,0 +1,46 @@
+
+{
+	"@id": "/searchresults",
+	"@type": "Collection",
+	"members": [{
+		"dc.title": "A combination of tri-modal cancer imaging and in vivo drug delivery by metal-organic framework based composite nanoparticles",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Probing extracellular acidity of live cells in real time for cancer detection and monitoring anti-cancer drug activity",
+		"fabio:abstract": ""
+	},
+	{
+		"dc.title": "",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Brain-Expressed X-linked (BEX) proteins in human cancers",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Mitochondrial dysfunction and disturbed coherence: Gate to cancer",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "How are cancer and connective tissue diseases related to sarcoidosis?",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Molecular pathways: At the crossroads of cancer epigenetics and immunotherapy",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Boosting cancer immunotherapy with anti-CD137 antibody therapy",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Validation of the Arabic Version of the Memorial Symptom Assessment Scale among Lebanese Cancer Patients",
+		"fabio:abstract": "[TODO]"
+	},
+	{
+		"dc.title": "Subsequent malignant neoplasms in a population- based cohort of pediatric cancer patients: A focus on the first 5 years",
+		"fabio:abstract": "[TODO]"
+	}],
+	"resultitems": 10
+}

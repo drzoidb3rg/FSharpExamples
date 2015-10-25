@@ -1,18 +1,23 @@
 ﻿using System.Dynamic;
-using FSharp.Data.Runtime.BaseTypes;
 using FSharp.Data;
+using FSharp.Data.Runtime.BaseTypes;
 
 namespace CSharpConsole
 {
-    public class DynamicJsonWrapper : System.Dynamic.DynamicObject
+    public class DynamicJsonValueWrapper : DynamicObject
     {
-        private IJsonDocument _data;
+        private JsonValue _data;
 
-
-        public DynamicJsonWrapper(IJsonDocument data)
+        public DynamicJsonValueWrapper(JsonValue jsonValue)
         {
-            _data = data;
+            _data = jsonValue;
         }
+
+        public DynamicJsonValueWrapper(IJsonDocument jsonDocument)
+         {
+             _data = jsonDocument.JsonValue;
+         }
+
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             if (_data == null)
@@ -29,10 +34,15 @@ namespace CSharpConsole
             if (propertyName == "Title")
                 propertyName = "dc.title";
 
-            result = Client.getGenericJsonValue(_data.JsonValue, propertyName);
+
+            if (propertyName == "Abstract")
+                propertyName = "fabio:abstract";
+
+            result = Client.getGenericJsonValue(_data, propertyName);
 
             return true;
         }
+
 
     }
 }
