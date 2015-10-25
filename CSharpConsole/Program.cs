@@ -12,6 +12,9 @@ namespace CSharpConsole
 
             Console.WriteLine("Id is " + ebscoObj.Id) ;
 
+            //need to handle not existant values
+            //var nothing = ebscoObj.Monkey;
+
             var members = ebscoObj.members;
 
             foreach (var item in members)

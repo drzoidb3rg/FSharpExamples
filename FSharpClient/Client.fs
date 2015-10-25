@@ -11,18 +11,19 @@
       | JsonValue.Record x ->  Map.ofArray x |> Some
       | _ -> None
 
+  
   let itemValue (x:JsonValue) =
       match x with 
       | JsonValue.String s -> GenericDynamicObject<string>(s |> string).DynamicObject
       | JsonValue.Array elements -> GenericDynamicObject<JsonValue[]>(elements).DynamicObject
-      | _ -> GenericDynamicObject<string>("").DynamicObject
+      | _ -> GenericDynamicObject<System.Object>(null).DynamicObject
 
   type ebscoProvider = JsonProvider<"json/ebsco.json">
   let ebscoSample = ebscoProvider.GetSample()
 
 
-  //make this sucinct
-  let getGenericJsonValue (x:JsonValue) (key:string) =
+  //think we need an Option.Bind here, don't just take the value
+  let getGenericJsonValue (x:JsonValue) (key:string) =  
      recordProperties(x).Value.Item(key) |> itemValue
 
 
