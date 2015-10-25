@@ -1,19 +1,21 @@
-﻿using System.Dynamic;
+﻿using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
 using FSharp.Data;
 using FSharp.Data.Runtime.BaseTypes;
 
 namespace CSharpConsole
 {
-    public class DynamicJsonValueWrapper : DynamicObject
+    public class DynamicJsonWrapper : DynamicObject
     {
         private JsonValue _data;
 
-        public DynamicJsonValueWrapper(JsonValue jsonValue)
+        public DynamicJsonWrapper(JsonValue jsonValue)
         {
             _data = jsonValue;
         }
 
-        public DynamicJsonValueWrapper(IJsonDocument jsonDocument)
+        public DynamicJsonWrapper(IJsonDocument jsonDocument)
          {
              _data = jsonDocument.JsonValue;
          }
@@ -38,7 +40,22 @@ namespace CSharpConsole
             if (propertyName == "Abstract")
                 propertyName = "fabio:abstract";
 
-            result = Client.getGenericJsonValue(_data, propertyName);
+            var temp = Client.getGenericJsonValue(_data, propertyName);
+
+            if (temp is JsonValue)
+            {
+                result = new DynamicJsonWrapper(temp as JsonValue);
+                return true;
+            }
+
+            if (temp is JsonValue[])
+            {
+                var array = temp as JsonValue[];
+                result = array.Select(item => new DynamicJsonWrapper(item)).ToList();
+                return true;
+            }
+
+            result = temp;
 
             return true;
         }
