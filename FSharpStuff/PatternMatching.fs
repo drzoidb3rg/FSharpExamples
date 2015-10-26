@@ -40,4 +40,3 @@ let (|PALINDROME|_|) (s:string) =
 match "aba" with
 | PALINDROME(v) -> printfn "The string %s is palindrome" v
 | "Antonio" -> printfn "Hello Antonio"
-

@@ -40,7 +40,7 @@ namespace CSharpConsole
             if (propertyName == "Abstract")
                 propertyName = "fabio:abstract";
 
-            var temp = Client.getSafeJsonValue(_data, propertyName);
+            var temp = Client.getBetterGenericJsonValue(_data, propertyName);
 
             if (temp is JsonValue)
             {
