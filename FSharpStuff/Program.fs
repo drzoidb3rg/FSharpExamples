@@ -8,7 +8,7 @@ open FSharp.Configuration
 //open Play
 //open PatternMatching
 //open Bind
-open Maybe
+open Html
 
 [<EntryPoint>]
 let main argv = 
@@ -16,7 +16,7 @@ let main argv =
 
    
 
-    let x = Maybe.foobar 0
+    let x = answer
 
     Console.ReadLine() |> ignore
     0 

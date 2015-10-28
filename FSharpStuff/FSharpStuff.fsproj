@@ -69,6 +69,7 @@
     <Compile Include="FunAndProfit.fs" />
     <Compile Include="lenses.fs" />
     <Compile Include="Maybe.fs" />
+    <Compile Include="Html.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
   </ItemGroup>
