@@ -6,7 +6,11 @@ open FSharp.Data.HtmlNode
 open FSharp.Data.HtmlAttribute
 
 let (>>=) m f = Option.bind f m
-let getOption f v = v |> f |> Some
+
+let optionalList list =  
+    match list with 
+    | [] -> None
+    | _ -> Some list 
 
 let doc = 
     """<html>
@@ -33,10 +37,7 @@ let doc =
        |> HtmlDocument.elements
        |> Seq.head
 
-let optionalList list =  
-    match list with 
-    | [] -> None
-    | _ -> Some list 
+
 
 
 type HtmlHelper () =
@@ -66,6 +67,7 @@ type OvidAuthorData  =
      AuthorSurname : string list option
    }  
    static member from (x:HtmlNode) =
+
      let resultNode = HtmlHelper.ById x "results"
 
      if resultNode = None then None else
@@ -74,8 +76,6 @@ type OvidAuthorData  =
                          |> Seq.tryPick Some
 
      
-
-
      let spannie p = resultNode.Value
                             |> HtmlNode.descendants false p
                             |> Seq.collect(HtmlNode.descendants false (HtmlNode.hasName "span"))
@@ -83,23 +83,26 @@ type OvidAuthorData  =
                             |> Seq.toList 
                             |> optionalList
 
-
-
-     let temp n index =
+     let build n index =
        Some { Index=index; AuthorInitials = HtmlHelper.TDByClass "ai" |> spannie; AuthorSurname = HtmlHelper.TDByClass "al" |> spannie}
 
-     let doRow n =
-       n |> index >>= getOption HtmlNode.innerText >>= temp n
+
+    //NEED TO KNOW OPTION.BIND OPTION.MAP
+     //let testMap n = Option.map HtmlNode.innerText
+
+     //let testBind n = Option.bind HtmlNode.innerText
+     
+     let doRow n = n |> index |> Option.map HtmlNode.innerText >>= build n
 
 
-     let rows = resultNode.Value |> HtmlHelper.TRs 
-                                 |> Seq.map(doRow)
-                                 |> Seq.toList 
-                                 |> List.choose id
-
-     Some rows
-
-                                        
+     resultNode.Value |> HtmlHelper.TRs 
+                      |> Seq.map(doRow)
+                      |> Seq.toList 
+                      |> List.choose id
+                      |> Some
+         
+         
+                          
 let results = doc |> OvidAuthorData.from
 
 let answer = results.Value
