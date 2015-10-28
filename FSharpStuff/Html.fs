@@ -60,23 +60,9 @@ type OvidAuthorData  =
 
      Some {AuthorInitials = initials}
 
-
-let initialTDPredicate node = node |> HtmlNode.hasClass "ai" && node |> HtmlNode.hasName "td" 
-
-
-
-
-let elementById id = doc |> HtmlNode.descendants false (HtmlNode.hasId id) |> Seq.tryPick Some 
-
-let initials resultsTable = resultsTable 
-                            |> HtmlNode.descendants false initialTDPredicate 
-                            |> Seq.collect(HtmlNode.descendants false (HtmlNode.hasName "span"))
-                            |> Seq.map(HtmlNode.innerText)
-                            |> Seq.toList 
-                            |> optionalList
                                          
                 
-let results = "results" |> elementById >>= initials
+let results = doc |> OvidAuthorData.from
 
 let answer = results
 
