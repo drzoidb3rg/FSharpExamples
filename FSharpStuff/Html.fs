@@ -6,6 +6,7 @@ open FSharp.Data.HtmlNode
 open FSharp.Data.HtmlAttribute
 
 let (>>=) m f = Option.bind f m
+let getOption f v = v |> f |> Some
 
 let doc = 
     """<html>
@@ -21,7 +22,7 @@ let doc =
                    </tr>
                    <tr>
                      <td xmlns="http://www.w3.org/1999/xhtml" class="_index">
-					    <a class="uri" href="/ovidws/resultsets/emef/nlp/pain/2">2</a>
+					    <a class="uri" href="/ovidws/resultsets/emef/nlp/pain/3">3</a>
 				     </td>
                      <td class="ai"><span>int 1</span><span>int 2</span></td><td class="al"><span>name one</span><span>name two</span></td>
                    </tr>
@@ -51,10 +52,10 @@ type HtmlHelper () =
   static member ByClass n c =
     n |> HtmlNode.descendants false (HtmlNode.hasClass c) 
 
-  static member TDByClass n c =
+  static member TDByClass c n =
     getHtmlNode n "td" c
 
-  static member AByClass n c =
+  static member AByClass c n =
     getHtmlNode n "a" c
 
 
@@ -67,17 +68,12 @@ type OvidAuthorData  =
    static member from (x:HtmlNode) =
      let resultNode = HtmlHelper.ById x "results"
 
-
-     //row >>= index >>= index number >>= build author record
-     let anchorClass n node = HtmlHelper.AByClass node n
-
-     let index row = row |> HtmlNode.descendants false (anchorClass "uri") 
-                         |> Seq.tryPick Some
-
-
      if resultNode = None then None else
 
-     let tdClass n node = HtmlHelper.TDByClass node n
+     let index row = row |> HtmlNode.descendants false (HtmlHelper.AByClass "uri") 
+                         |> Seq.tryPick Some
+
+     
 
 
      let spannie p = resultNode.Value
@@ -87,23 +83,25 @@ type OvidAuthorData  =
                             |> Seq.toList 
                             |> optionalList
 
-     let spannie2 n p = n |> HtmlNode.descendants false p
-                          |> Seq.collect(HtmlNode.descendants false (HtmlNode.hasName "span"))
-                          |> Seq.map(HtmlNode.innerText)
-                          |> Seq.toList 
-                          |> optionalList
 
-      //need to get list of rows, pass each into spannie
+
+     let temp n index =
+       Some { Index=index; AuthorInitials = HtmlHelper.TDByClass "ai" |> spannie; AuthorSurname = HtmlHelper.TDByClass "al" |> spannie}
+
+     let doRow n =
+       n |> index >>= getOption HtmlNode.innerText >>= temp n
+
+
      let rows = resultNode.Value |> HtmlHelper.TRs 
-                                 |> Seq.map(fun n -> index n)
-                                 |> Seq.toList
+                                 |> Seq.map(doRow)
+                                 |> Seq.toList 
+                                 |> List.choose id
 
-
-     Some {Index = ""; AuthorInitials = tdClass "ai" |> spannie; AuthorSurname = tdClass "al" |> spannie}
+     Some rows
 
                                         
 let results = doc |> OvidAuthorData.from
 
-let answer = results
+let answer = results.Value
 
 let x = answer
