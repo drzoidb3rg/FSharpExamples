@@ -1,5 +1,5 @@
 ﻿module Railway
-
+//http://fsharpforfunandprofit.com/posts/recipe-part2/
 
 type Result<'TSuccess,'TFailure> = 
     | Success of 'TSuccess
@@ -189,3 +189,21 @@ let usecase7 =
     >=> tryCatch (tee updateDatabase)
 
 //*****************Dynamic injection of functions******************
+
+type Config = {debug:bool}
+
+
+let debugLogger twoTrackInput = 
+    let success x = printfn "DEBUG. Success so far: %A" x; x
+    let failure = id // don't log here
+    doubleMap success failure twoTrackInput 
+
+let injectableLogger config = 
+    if config.debug then debugLogger else id
+
+
+let usecase8 config = 
+    combinedValidation 
+    >> map canonicalizeEmail
+    >> injectableLogger config
+

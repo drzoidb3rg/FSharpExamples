@@ -76,6 +76,7 @@
     <Compile Include="EBSCOProvider.fs" />
     <Compile Include="Http.fs" />
     <Compile Include="Railway.fs" />
+    <Compile Include="RailwayCompleteCode.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
   </ItemGroup>
