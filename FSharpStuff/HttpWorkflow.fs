@@ -24,7 +24,6 @@ let getHttpStringResponse url = Http.RequestString( url, httpMethod = "GET", hea
 let data html  = NugetStats.Parse html
 
 
-
 let validate1 url =
   match url with
     | "" -> fail "url is empty"
@@ -52,7 +51,7 @@ let simpleWorkflow url =
 
 
 
-//not sure what trial is, use this for error handling
+//not sure what trial is, use this for error handling ? how does this fit in with my workflow ???
 let doTrial url =
         trial {
           let! a = validate1 url
