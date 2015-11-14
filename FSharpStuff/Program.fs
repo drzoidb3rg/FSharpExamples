@@ -2,22 +2,18 @@
 open System
 open System.Configuration
 open FSharp.Configuration
-//open DataStructures
-//open Curry
-//open Operators
-//open Play
-//open PatternMatching
-//open Bind
 
 
-open Railway
+open HttpWorkflow
 
 [<EntryPoint>]
 let main argv = 
     printfn "Hi"
 
    
-    Railway.input1
+    let result = HttpWorkflow.answer
+
+    printfn "%A" result
 
     Console.ReadLine() |> ignore
     0 

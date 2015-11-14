@@ -30,3 +30,6 @@ C:\src\FSharpExamples\FSharpStuff\bin\Debug\FSharp.Data.xml
 C:\src\FSharpExamples\FSharpStuff\bin\Debug\SharpYaml.xml
 C:\src\FSharpExamples\FSharpStuff\obj\Debug\FSharpStuff.exe
 C:\src\FSharpExamples\FSharpStuff\obj\Debug\FSharpStuff.pdb
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.dll
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.pdb
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.xml
