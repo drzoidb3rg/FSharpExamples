@@ -11,9 +11,17 @@ let main argv =
     printfn "Hi"
 
    
-    let result = HttpWorkflow.answer
+    let goodResult = urlData |> simpleWorkflow
 
-    printfn "%A" result
+    let badResult1 = "" |> simpleWorkflow
+
+    let badResult2 = "abc" |> simpleWorkflow
+
+    printfn "%A" goodResult
+
+    printfn "%A" badResult1
+
+    printfn "%A" badResult2
 
     Console.ReadLine() |> ignore
     0 
