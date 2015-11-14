@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpStuff", "FSharpStuff.fsproj", "{09679C96-6BF9-4259-90ED-915FBB6E8E40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpConsole", "..\CSharpConsole\CSharpConsole.csproj", "{5BC1F290-1C95-461E-983A-84F04EF920D6}"

@@ -8,15 +8,16 @@ open FSharp.Configuration
 //open Play
 //open PatternMatching
 //open Bind
-open Html
+
+
+open Railway
 
 [<EntryPoint>]
 let main argv = 
     printfn "Hi"
 
    
-
-    let x = answer
+    Railway.input1
 
     Console.ReadLine() |> ignore
     0 

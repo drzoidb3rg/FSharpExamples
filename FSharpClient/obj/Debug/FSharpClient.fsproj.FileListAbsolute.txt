@@ -2,9 +2,9 @@ C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharpClient.XML
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharpClient.dll
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharpClient.pdb
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Core.dll
-C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Core.xml
-C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.dll
-C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.pdb
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Data.dll
+C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Core.xml
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Data.pdb
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Data.xml
+C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.dll
+C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.pdb
