@@ -6,6 +6,12 @@ open FSharp.Data
 
 type NugetStats = HtmlProvider<"https://www.nuget.org/packages/FSharp.Data">
 
+type Error =
+      | RequestValidationError of string
+      | HttpResponseError of string
+      | HttpException of string
+      | ValidationError of string
+      | GenericError of string
 
 type ResultSet =
   {
@@ -30,10 +36,13 @@ let getSafeHttpStringResponse uri =
            let r = Async.StartChild (req,millisecondsTimeout = 60000 ) 
                    |> Async.RunSynchronously 
                    |> Async.RunSynchronously
-           return r
+
+           return! ok(r)
+
          with
            | e -> 
-                return! fail((sprintf "Http request failed %s" (e.Message)) )
+                //return! fail((sprintf "Http request failed %s" (e.Message)) )
+                return! fail(( HttpException (sprintf "Http request failed %s" (e.Message))) )
     }
 
 
@@ -41,33 +50,29 @@ let getSafeHttpStringResponse uri =
 let validateResoponseStatusCode x =
   match x.StatusCode with
    | 200 -> ok x
-   | _ -> fail((sprintf "Invaid status code %A %A" x.StatusCode x.Body))
+   | _ -> fail(HttpResponseError (sprintf "Invaid status code %A %A" x.StatusCode x.Body))
 
 let getResponseString x = 
   match x.Body with
     | Text text -> ok text
-    | _ -> fail "no body text"
-
-let data html  = NugetStats.Parse html
+    | _ -> fail (RequestValidationError "no body text")
 
 
 let validate1 url =
   match url with
-    | "" -> fail "url is empty"
+    | "" -> fail (RequestValidationError "url is empty")
     | _ -> ok url
 
-let validate2 url =
-  match url with
-    | "https://www.nuget.org/packages/FSharp.Data" -> ok url
-    | "https://www.nuget.org/packages/FSharp.Core" -> ok url
-    | _ -> fail "url is not one I was expecting"
+let data html  = NugetStats.Parse html
 
 
 
 let combinedValidation = 
     // connect the two-tracks together
     validate1
-   // >> bind validate2
+    //>> bind validate2
+    //>> bind validate3
+
 
 
 let simpleWorkflow url =

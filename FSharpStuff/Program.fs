@@ -11,7 +11,7 @@ let main argv =
     printfn "Hi"
 
    
-   // let goodResult = urlData |> simpleWorkflow
+    let goodResult = urlData |> simpleWorkflow
 
     //let badResult1 = "" |> simpleWorkflow
 
@@ -19,7 +19,7 @@ let main argv =
 
     let timeout = "http://httpstat.us/504" |> simpleWorkflow
 
-  //  printfn "%A" goodResult
+    printfn "%A" goodResult
 
     //printfn "%A" badResult1
 
