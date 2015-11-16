@@ -13,17 +13,17 @@ let main argv =
    
     let goodResult = urlData |> simpleWorkflow
 
-    //let badResult1 = "" |> simpleWorkflow
+    let badResult1 = "" |> simpleWorkflow
 
     //let badResult2 = "abc" |> simpleWorkflow
 
-    let timeout = "http://httpstat.us/504" |> simpleWorkflow
+    //let timeout = "http://httpstat.us/504" |> simpleWorkflow
 
     printfn "%A" goodResult
 
     //printfn "%A" badResult1
 
-    printfn "%A" timeout
+   // printfn "%A" timeout
 
 
     Console.ReadLine() |> ignore

@@ -6,12 +6,14 @@ open FSharp.Data
 
 type NugetStats = HtmlProvider<"https://www.nuget.org/packages/FSharp.Data">
 
-type Error =
+type Diagnostic =
       | RequestValidationError of string
       | HttpResponseError of string
       | HttpException of string
       | ValidationError of string
       | GenericError of string
+      | Message of string
+
 
 type ResultSet =
   {
@@ -33,24 +35,28 @@ let getSafeHttpStringResponse uri =
          try
            let req = Http.AsyncRequest (uri ,silentHttpErrors = true)
 
+           let timer = new System.Diagnostics.Stopwatch()
+           timer.Start()
+
            let r = Async.StartChild (req,millisecondsTimeout = 60000 ) 
                    |> Async.RunSynchronously 
                    |> Async.RunSynchronously
 
-           return! ok(r)
 
+           let m = sprintf "%s : %i seconds" uri timer.ElapsedMilliseconds |> Message
+           
+           return! warn m r
          with
            | e -> 
-                //return! fail((sprintf "Http request failed %s" (e.Message)) )
-                return! fail(( HttpException (sprintf "Http request failed %s" (e.Message))) )
+                return! fail(sprintf "Http request failed %s" (e.Message) |> HttpException)
     }
 
 
-
 let validateResoponseStatusCode x =
-  match x.StatusCode with
-   | 200 -> ok x
-   | _ -> fail(HttpResponseError (sprintf "Invaid status code %A %A" x.StatusCode x.Body))
+     match x.StatusCode with
+       | 200 -> ok x
+       | _ -> fail(HttpResponseError (sprintf "Invaid status code %A %A" x.StatusCode x.Body))
+   
 
 let getResponseString x = 
   match x.Body with
@@ -63,14 +69,30 @@ let validate1 url =
     | "" -> fail (RequestValidationError "url is empty")
     | _ -> ok url
 
-let data html  = NugetStats.Parse html
+let validate2 url =
+  match url with
+    | "" -> fail (RequestValidationError "url is empty again")
+    | _ -> ok url
+
+let parseData html  = 
+  trial {
+      try
+
+         let r = NugetStats.Parse html  
+         let m = "some message" |> Message
+         return! warn m r
+      with
+           | e -> 
+                return! fail(sprintf "Http request failed %s" (e.Message) |> HttpException)
+  }
+
 
 
 
 let combinedValidation = 
     // connect the two-tracks together
     validate1
-    //>> bind validate2
+    >> bind validate2
     //>> bind validate3
 
 
@@ -80,7 +102,7 @@ let simpleWorkflow url =
       >>= getSafeHttpStringResponse
       >>= validateResoponseStatusCode
       >>= getResponseString
-      |> lift data
+      >>= parseData
       |> lift ResultSet.from
 
 
