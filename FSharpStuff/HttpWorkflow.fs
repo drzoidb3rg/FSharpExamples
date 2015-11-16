@@ -21,6 +21,33 @@ let urlCore = "https://www.nuget.org/packages/FSharp.Core"
 
 let getHttpStringResponse url = Http.RequestString( url, httpMethod = "GET", headers = [ "Accept", "text/xml" ]) 
 
+let getSafeHttpStringResponse uri =
+    trial {
+        
+         try
+           let req = Http.AsyncRequest (uri ,silentHttpErrors = true)
+
+           let r = Async.StartChild (req,millisecondsTimeout = 60000 ) 
+                   |> Async.RunSynchronously 
+                   |> Async.RunSynchronously
+           return r
+         with
+           | e -> 
+                return! fail((sprintf "Http request failed %s" (e.Message)) )
+    }
+
+
+
+let validateResoponseStatusCode x =
+  match x.StatusCode with
+   | 200 -> ok x
+   | _ -> fail((sprintf "Invaid status code %A %A" x.StatusCode x.Body))
+
+let getResponseString x = 
+  match x.Body with
+    | Text text -> ok text
+    | _ -> fail "no body text"
+
 let data html  = NugetStats.Parse html
 
 
@@ -40,23 +67,18 @@ let validate2 url =
 let combinedValidation = 
     // connect the two-tracks together
     validate1
-    >> bind validate2
+   // >> bind validate2
 
 
 let simpleWorkflow url =
   url |> combinedValidation
-      |> lift getHttpStringResponse
+      >>= getSafeHttpStringResponse
+      >>= validateResoponseStatusCode
+      >>= getResponseString
       |> lift data
       |> lift ResultSet.from
 
 
-
-//not sure what trial is, use this for error handling ? how does this fit in with my workflow ???
-let doTrial url =
-        trial {
-          let! a = validate1 url
-          return {FirstVersion = "ok"}
-        }
 
 
 
