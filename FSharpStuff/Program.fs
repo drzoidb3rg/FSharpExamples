@@ -21,10 +21,9 @@ let main argv =
 
     printfn "%A" goodResult
 
-    //printfn "%A" badResult1
+    printfn "%A" badResult1
 
    // printfn "%A" timeout
-
 
     Console.ReadLine() |> ignore
     0 
