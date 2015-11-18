@@ -2,7 +2,7 @@
 open System
 open System.Configuration
 open FSharp.Configuration
-
+open Chessie
 
 open HttpWorkflow
 
@@ -13,15 +13,21 @@ let main argv =
    
     let goodResult = urlData |> simpleWorkflow
 
-    let badResult1 = "" |> simpleWorkflow
+    //let ret = goodResult.
+
+    
+    //let badResult1 = "" |> simpleWorkflow
 
     //let badResult2 = "abc" |> simpleWorkflow
 
     //let timeout = "http://httpstat.us/504" |> simpleWorkflow
 
+    printfn "%s"Environment.NewLine
+    printfn "%s"Environment.NewLine
+
     printfn "%A" goodResult
 
-    printfn "%A" badResult1
+    //printfn "%A" badResult1
 
    // printfn "%A" timeout
 

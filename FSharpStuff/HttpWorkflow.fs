@@ -18,9 +18,10 @@ type Diagnostic =
 type ResultSet =
   {
     FirstVersion : string
+    ErrorMessage : string option
   }
   static member from (x:NugetStats) = 
-    {FirstVersion =  x.Tables.``Version History``.Rows.[0].Version}
+    {FirstVersion =  x.Tables.``Version History``.Rows.[0].Version; ErrorMessage = None}
 
 
 let urlData = "https://www.nuget.org/packages/FSharp.Data"
@@ -28,6 +29,8 @@ let urlCore = "https://www.nuget.org/packages/FSharp.Core"
 
 
 let getHttpStringResponse url = Http.RequestString( url, httpMethod = "GET", headers = [ "Accept", "text/xml" ]) 
+
+
 
 let getSafeHttpStringResponse uri =
     trial {
@@ -95,6 +98,16 @@ let combinedValidation =
     >> bind validate2
     //>> bind validate3
 
+let log x = 
+    let success(x,msgs) = printf "Debug. %A" msgs
+    let failure msgs = printf "ERROR. %A" msgs
+    eitherTee success failure x 
+
+
+let output x = 
+    let success(x,msgs) = printf "Debug. %A" msgs
+    let failure msgs = printf "ERROR. %A" msgs
+    {FirstVersion = "99"; ErrorMessage = "err message" |> Some}
 
 
 let simpleWorkflow url =
@@ -104,7 +117,11 @@ let simpleWorkflow url =
       >>= getResponseString
       >>= parseData
       |> lift ResultSet.from
+      |> log
+      |> output
+ 
 
+     
 
 
 

@@ -84,6 +84,7 @@
     <Compile Include="Railway.fs" />
     <Compile Include="RailwayCompleteCode.fs" />
     <Compile Include="HttpWorkflow.fs" />
+    <Compile Include="Types.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
   </ItemGroup>
