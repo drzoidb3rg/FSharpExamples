@@ -18,7 +18,7 @@ type Diagnostic =
 type ResultSet =
   {
     FirstVersion : string
-    ErrorMessage : string option
+    ErrorMessage : Diagnostic list option
   }
   static member from (x:NugetStats) = 
     {FirstVersion =  x.Tables.``Version History``.Rows.[0].Version; ErrorMessage = None}
@@ -104,10 +104,19 @@ let log x =
     eitherTee success failure x 
 
 
+let temp x =
+  let version = x.FirstVersion
+  x
+
+
+let errorResult x =
+ {FirstVersion = "-1"; ErrorMessage = Some x}
+
 let output x = 
-    let success(x,msgs) = printf "Debug. %A" msgs
-    let failure msgs = printf "ERROR. %A" msgs
-    {FirstVersion = "99"; ErrorMessage = "err message" |> Some}
+    match x with 
+      | Bad(y) -> errorResult y
+      | Ok(result,msgs) -> result
+    
 
 
 let simpleWorkflow url =
@@ -117,9 +126,8 @@ let simpleWorkflow url =
       >>= getResponseString
       >>= parseData
       |> lift ResultSet.from
-      |> log
       |> output
- 
+
 
      
 
