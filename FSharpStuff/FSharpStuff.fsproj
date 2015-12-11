@@ -85,8 +85,11 @@
     <Compile Include="RailwayCompleteCode.fs" />
     <Compile Include="HttpWorkflow.fs" />
     <Compile Include="Types.fs" />
+    <Compile Include="Roman.fs" />
+    <Compile Include="OVIDConnect.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
+    <None Include="Script.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

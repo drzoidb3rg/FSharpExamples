@@ -8,3 +8,4 @@ C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Data.pdb
 C:\src\FSharpExamples\FSharpClient\bin\Debug\FSharp.Data.xml
 C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.dll
 C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.pdb
+C:\src\FSharpExamples\FSharpClient\obj\Debug\FSharpClient.fsprojResolveAssemblyReference.cache
