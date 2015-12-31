@@ -33,3 +33,7 @@ C:\src\FSharpExamples\FSharpStuff\obj\Debug\FSharpStuff.pdb
 C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.dll
 C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.pdb
 C:\src\FSharpExamples\FSharpStuff\bin\Debug\Chessie.xml
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\FParsec.dll
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\FParsecCS.dll
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\FParsec.xml
+C:\src\FSharpExamples\FSharpStuff\bin\Debug\FParsecCS.xml

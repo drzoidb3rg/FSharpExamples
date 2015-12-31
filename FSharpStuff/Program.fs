@@ -3,15 +3,15 @@ open System
 open System.Configuration
 open FSharp.Configuration
 open Chessie
-
-open OVIDConnect
+open TurleRobotParser
 
 
 [<EntryPoint>]
 let main argv = 
     printfn "Hi"
 
-    let x = OVIDConnect.html
+    let x = TurleRobotParser.answer
+
 
 
     Console.ReadLine() |> ignore
