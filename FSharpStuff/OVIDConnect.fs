@@ -36,6 +36,7 @@ req.Method <- "POST"
 
 let q = System.Net.WebUtility.UrlEncode("monkey.ab")
 
+//nlp or void
 let postBytes = Encoding.ASCII.GetBytes("query=monkey.ab&type=nlp&lifespan=session")
 
 req.ContentType <- "application/x-www-form-urlencoded"
