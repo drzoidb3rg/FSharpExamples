@@ -4,13 +4,14 @@ open System.Configuration
 open FSharp.Configuration
 open Chessie
 //open TurleRobotParser
-open FParsecTutorial
+//open FParsecTutorial
+open JsonParser
 
 [<EntryPoint>]
 let main argv = 
     printfn "Hi"
 
-    let x = FParsecTutorial.x
+    let x = JsonParser.x
 
 
     Console.ReadLine() |> ignore
