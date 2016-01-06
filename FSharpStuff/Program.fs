@@ -11,7 +11,7 @@ open JsonParser
 let main argv = 
     printfn "Hi"
 
-    let x = JsonParser.x
+    //let x = JsonParser.x
 
 
     Console.ReadLine() |> ignore
