@@ -96,6 +96,7 @@
     <Compile Include="Roman.fs" />
     <Compile Include="OVIDConnect.fs" />
     <Compile Include="TurleRobotParser.fs" />
+    <Compile Include="FParsecTutorial.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
     <None Include="Script.fsx" />

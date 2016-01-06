@@ -3,15 +3,14 @@ open System
 open System.Configuration
 open FSharp.Configuration
 open Chessie
-open TurleRobotParser
-
+//open TurleRobotParser
+open FParsecTutorial
 
 [<EntryPoint>]
 let main argv = 
     printfn "Hi"
 
-    let x = TurleRobotParser.answer
-
+    let x = FParsecTutorial.x
 
 
     Console.ReadLine() |> ignore
