@@ -99,6 +99,7 @@
     <Compile Include="FParsecTutorial.fs" />
     <Compile Include="JsonParser.fs" />
     <Compile Include="Catamorphism.fs" />
+    <Compile Include="FParsecPlay.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
     <None Include="Script.fsx" />

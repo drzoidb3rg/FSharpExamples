@@ -6,8 +6,7 @@ open Chessie
 open TurleRobotParser
 //open FParsecTutorial
 //open JsonParser
-
-open Catamorphism
+//open Catamorphism
 
 [<EntryPoint>]
 let main argv = 
