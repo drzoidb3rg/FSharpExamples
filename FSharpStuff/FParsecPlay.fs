@@ -213,9 +213,22 @@ run positiveInt "3"
 
 
 
-let isOnlyTwo  = psimpleString |> resultSatisfies (fun x -> x.Length = 2) "The item is not 2 chars "
+let isOnlyTwo  = psimpleString |> resultSatisfies (fun x -> x.Length = 2) "not 2 chars" <!> "is only two"
+run isOnlyTwo "ab"
 
-run isOnlyTwo "a"
+//this is close to what I want, runs both together
+let pfieldWithLengthCheck = followedByL isOnlyTwo "this field is not 2 characters long" >>. pfield 
+test pfieldWithLengthCheck "ti"
+
+//this runs off the end
+let ptitle2 = ptitle .>> isOnlyTwo
+test ptitle2 "ti"
+
+let anyFieldList2 = sepBy1 pfieldWithLengthCheck  (str ",")
+test anyFieldList2 "ti,ab,au,xx"
+
+//this needs to fail because it has 3 letters
+test anyFieldList2 "ti,ab,xx"
 
 
 
