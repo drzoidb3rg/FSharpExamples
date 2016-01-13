@@ -35,9 +35,9 @@ let block = between (pstring "[") (pstring "]") pcommands
 
 
 let prepeat = pstring "repeat" >>. spaces1 >>. pfloat .>> spaces .>>. block
-                 |>> fun (n, commands) -> Repeat(int n, commands)
+                |>> fun (n, commands) -> Repeat(int n, commands)
 
-let q1 =  "repeat 36 [forward 10 right 10]"
+let q1 =  "repeat 36 [forwaxrd 10 right 10]"
 
 
 let parse code =

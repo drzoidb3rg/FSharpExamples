@@ -108,3 +108,26 @@ type Parser<'t> = Parser<'t, UserState>
 
 let p : Parser<_> = pstring "test"
 
+
+
+let (<!>) (p: Parser<_,_>) label : Parser<_,_> =
+    fun stream ->
+        printfn "%A: Entering %s" stream.Position label
+        let reply = p stream
+        printfn "%A: Leaving %s (%A)" stream.Position label reply.Status
+        reply
+
+
+let number = many1Satisfy isDigit  <!> "number"
+
+let emptyElement = pstring "[]"  <!> "emptyElement"
+let numberElement = pstring "[" >>. number .>> pstring "]" <!> "numberElement"
+let nanElement = pstring "[NaN]"
+
+let element = choice [emptyElement
+                      numberElement
+                      nanElement] .>> spaces
+
+let elements : Parser<_,unit> = many element
+
+let x = test elements "[] [123] [NaN]"
